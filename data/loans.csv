@@ -1,0 +1,4 @@
+loan_id,customer_id,loan_type,ead,lgd,term_months,monthly_installment,facility_type
+L001,C001,Consumer Loan,10000,0.60,36,320,
+L002,C001,Consumer Loan,5000,0.40,24,230,
+L003,C002,Corporate Loan,500000,0.40,60,,Term Loan

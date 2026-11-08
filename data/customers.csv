@@ -1,0 +1,3 @@
+customer_id,name,customer_type,pd,monthly_income,monthly_debt_payments,annual_operating_cash_flow,annual_debt_service
+C001,Ivan Ivanov,Individual,0.03,3000,750,,
+C002,ABC Ltd,Corporate,0.02,,,200000,100000
