@@ -16,7 +16,7 @@ protected:
 
 public:
     virtual ~Loan() = default;
-
+// trqbva da se napravqt i setter-i!!!
     const std::string& getId() const noexcept;
     const std::string& getCustomerId() const noexcept;
     double getEAD() const noexcept;
