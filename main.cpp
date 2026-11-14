@@ -1,5 +1,6 @@
 #include "CSVRepo.h"
 #include "DomainTypes.h"
+#include "MonteCarloSimulator.h"
 #include "PortfolioFilter.h"
 
 #include <filesystem>
@@ -28,6 +29,17 @@ int main() {
         FilterCriteria all;
         const auto original = PortfolioFilter::apply(portfolio, all);
         printScenario("Original portfolio", original);
+
+        // Monte Carlo върху целия портфейл: 100 000 сценария, seed 42.
+        // Средната симулирана загуба трябва да е близо до Expected Loss отгоре,
+        // независимо от rho. Корелацията променя само опашката (VaR / ES).
+        for (const double rho : {0.0, 0.2}) {
+            const MonteCarloSimulator simulator(100'000, 42, rho);
+            const SimulationResult result = simulator.run(original);
+            std::cout << "=== MONTE CARLO (rho = " << rho << ", "
+                      << simulator.getThreadCount() << " threads) ===\n"
+                      << result << "\n\n";
+        }
 
         // First scenario: individuals who hold at least two loans.
         FilterCriteria individuals;
